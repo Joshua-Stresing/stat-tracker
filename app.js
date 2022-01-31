@@ -59,9 +59,16 @@ remove.addEventListener('click', () => {
 
 save.addEventListener('click', () => {
     // Step 3 - add code to allow users to save the state
+    let totalPoints = 0;
     // Loop through the list of stats and add up the total points scored
     // Create a new object with the game number and the total points
+    for (const stat of stats) {
+        totalPoints += stat.points;
+    }
     // { number: games.length + 1, totalPoints: totalPoints }
+    games.push({ number: games.length + 1, totalPoints });
     // Push the new object onto the games array then call renderGames
+    renderGames();
     // reset the stats with resetStats
+    resetStats();
 });
