@@ -38,12 +38,23 @@ form.addEventListener('submit', (e) => {
     // Create an object to "model" you statistic like the following:
     // { player: 'Bob', points: 2 }
     // Hint -- create the object from the form, push it onto the stats array, then call renderStats
+    e.preventDefault();
+    const data = new FormData(form);
+    const item = {
+        player: data.get('player'),
+        points: Number(data.get('points'))
+    };
+    stats.push(item);
+    renderStats();
+    form.reset();
 });
 
 remove.addEventListener('click', () => {
     // Step 2 -- add code to allow users to remove the most recent stat
     // Hint -- how do you remove an element from an array?
+    stats.pop();
     // Hint -- how can we rerender the stats using a function above?
+    renderStats();
 });
 
 save.addEventListener('click', () => {
